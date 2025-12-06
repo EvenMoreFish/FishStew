@@ -1,12 +1,23 @@
 package uk.firedev.fishstew;
 
+import com.oheers.fish.api.FileUtil;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import uk.firedev.fishstew.command.MainCommand;
+import uk.firedev.fishstew.item.FishStewItem;
+import uk.firedev.fishstew.item.FishStewRegistry;
+
+import java.io.File;
+import java.util.List;
+import java.util.logging.Level;
 
 public final class FishStewPlugin extends JavaPlugin {
 
     private static FishStewPlugin INSTANCE;
+
+    private final File itemDirectory = new File(getDataFolder(), "items");
 
     public FishStewPlugin() {
         if (INSTANCE != null) {
@@ -23,19 +34,41 @@ public final class FishStewPlugin extends JavaPlugin {
     }
 
     @Override
-    public void onLoad() {}
+    public void onLoad() {
+        if (!itemDirectory.exists()) {
+            itemDirectory.mkdirs();
+        }
+        registerCommands();
+    }
 
     @Override
-    public void onEnable() {}
+    public void onEnable() {
+        getServer().getPluginManager().registerEvents(new InteractListener(), this);
+        reload();
+    }
 
     @Override
     public void onDisable() {}
 
+    @SuppressWarnings("UnstableApiUsage")
     private void registerCommands() {
         this.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
-            // Register Brigadier commands here.
-            // commands.registrar().register(new MyCommand().get());
+            commands.registrar().register(MainCommand.get());
         });
+    }
+
+    public void reload() {
+        FishStewRegistry.getInstance().clear();
+        List<File> stewFiles = FileUtil.getFilesInDirectory(itemDirectory, true, true);
+
+        for (File file : stewFiles) {
+            try {
+                FishStewItem item = new FishStewItem(file);
+                FishStewRegistry.getInstance().register(item);
+            } catch (InvalidConfigurationException exception) {
+                getLogger().warning(exception.getMessage());
+            }
+        }
     }
 
 }

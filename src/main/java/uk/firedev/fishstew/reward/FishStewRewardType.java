@@ -1,27 +1,35 @@
 package uk.firedev.fishstew.reward;
 
+import com.oheers.fish.FishUtils;
 import com.oheers.fish.api.reward.RewardType;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.fishstew.FishStewPlugin;
+import uk.firedev.fishstew.item.FishStewItem;
+import uk.firedev.fishstew.item.FishStewRegistry;
 
 public class FishStewRewardType extends RewardType {
 
     @Override
-    public void doReward(@NotNull Player player, @NotNull String s, @NotNull String s1, Location location) {
-
+    public void doReward(@NotNull Player player, @NotNull String key, @NotNull String value, Location hookLocation) {
+        FishStewItem item = FishStewRegistry.getInstance().get(value);
+        if (item == null) {
+            FishStewPlugin.getInstance().getLogger().warning(value + " is not a valid FishStewItem.");
+            return;
+        }
+        item.give(player);
     }
 
     @Override
     public @NotNull String getIdentifier() {
-        return "";
+        return "fishstew";
     }
 
     @Override
     public @NotNull String getAuthor() {
-        return "";
+        return "FireML";
     }
 
     @Override

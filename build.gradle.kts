@@ -22,17 +22,21 @@ dependencies {
 group = "uk.firedev"
 version = properties["project-version"] as String
 description = "An EvenMoreFish addon that adds items to start a fishing contest."
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 bukkit {
     name = project.name
     version = project.version.toString()
-    main = "uk.firedev.fishstew.PluginTemplate"
-    apiVersion = "1.20"
+    main = "uk.firedev.fishstew.FishStewPlugin"
+    apiVersion = "1.21"
     author = "FireML"
     description = project.description.toString()
 
     depend = listOf("EvenMoreFish")
+
+    permissions {
+        register("fishstew.command")
+    }
 }
 
 tasks {
