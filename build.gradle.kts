@@ -1,8 +1,5 @@
-import net.minecrell.pluginyml.paper.PaperPluginDescription
-
 plugins {
     `java-library`
-    `maven-publish`
     alias(libs.plugins.shadow)
     alias(libs.plugins.plugin.yml)
 }
@@ -11,63 +8,31 @@ repositories {
     mavenCentral()
     gradlePluginPortal()
     maven("https://repo.papermc.io/repository/maven-public/")
-    maven("https://repo.codemc.io/repository/FireML/")
+    maven("https://repo.codemc.io/repository/EvenMoreFish/")
 }
 
 dependencies {
     compileOnly(libs.paper.api)
-    compileOnly(libs.daisylib)
+    compileOnly(libs.bundles.evenmorefish) {
+        exclude("de.tr7zw", "item-nbt-api")
+        exclude("com.github.Anon8281", "UniversalScheduler")
+    }
 }
 
 group = "uk.firedev"
 version = properties["project-version"] as String
-description = "Template Plugin"
-java.sourceCompatibility = JavaVersion.VERSION_21
+description = "An EvenMoreFish addon that adds items to start a fishing contest."
+java.sourceCompatibility = JavaVersion.VERSION_17
 
-paper {
+bukkit {
     name = project.name
     version = project.version.toString()
-    main = "uk.firedev.plugintemplate.PluginTemplate"
-    apiVersion = "1.21.10"
+    main = "uk.firedev.fishstew.PluginTemplate"
+    apiVersion = "1.20"
     author = "FireML"
     description = project.description.toString()
 
-    loader = "uk.firedev.plugintemplate.LibraryLoader"
-    generateLibrariesJson = true
-
-    serverDependencies {
-        register("DaisyLib") {
-            required = true
-            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
-        }
-    }
-}
-
-publishing {
-    repositories {
-        maven {
-            url = uri("https://repo.codemc.io/repository/FireML/")
-
-            val mavenUsername = System.getenv("JENKINS_USERNAME")
-            val mavenPassword = System.getenv("JENKINS_PASSWORD")
-
-            if (mavenUsername != null && mavenPassword != null) {
-                credentials {
-                    username = mavenUsername
-                    password = mavenPassword
-                }
-            }
-        }
-    }
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = project.group.toString()
-            artifactId = rootProject.name
-            version = project.version.toString()
-
-            from(components["java"])
-        }
-    }
+    depend = listOf("EvenMoreFish")
 }
 
 tasks {
@@ -81,9 +46,5 @@ tasks {
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"
-    }
-    // Use the Google Maven Central proxy to stop Paper from complaining.
-    generatePaperPluginDescription {
-        useGoogleMavenCentralProxy()
     }
 }

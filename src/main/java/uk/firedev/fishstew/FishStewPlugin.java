@@ -1,23 +1,23 @@
-package uk.firedev.plugintemplate;
+package uk.firedev.fishstew;
 
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public final class PluginTemplate extends JavaPlugin {
+public final class FishStewPlugin extends JavaPlugin {
 
-    private static PluginTemplate INSTANCE;
+    private static FishStewPlugin INSTANCE;
 
-    public PluginTemplate() {
+    public FishStewPlugin() {
         if (INSTANCE != null) {
             throw new UnsupportedOperationException(getClass().getName() + " has already been assigned!");
         }
         INSTANCE = this;
     }
 
-    public static @NotNull PluginTemplate getInstance() {
+    public static @NotNull FishStewPlugin getInstance() {
         if (INSTANCE == null) {
-            throw new UnsupportedOperationException(PluginTemplate.class.getSimpleName() + " has not been assigned!");
+            throw new UnsupportedOperationException(FishStewPlugin.class.getSimpleName() + " has not been assigned!");
         }
         return INSTANCE;
     }
