@@ -20,26 +20,25 @@ import java.io.File;
 import java.util.UUID;
 
 @SuppressWarnings("UnstableApiUsage")
-public class FishStewItem implements RegistryItem {
+public class FishStewItem extends ConfigBase implements RegistryItem {
 
     private final @NotNull String id;
     private final @NotNull ItemFactory factory;
     private final @NotNull CompetitionFile compFile;
 
     public FishStewItem(@NotNull File file) throws InvalidConfigurationException {
-        ConfigBase base = new ConfigBase(file, FishStewPlugin.getInstance(), false);
-        YamlDocument config = base.getConfig();
-        String key = config.getString("id");
+        super(file, FishStewPlugin.getInstance(), false);
+        String key = getConfig().getString("id");
         if (key == null) {
             throw new InvalidConfigurationException("ID does not exist for " + file.getName());
         }
         this.id = key;
-        CompetitionFile compFile = EvenMoreFish.getInstance().getCompetitionQueue().getItem(config.getString("competition-id"));
+        CompetitionFile compFile = EvenMoreFish.getInstance().getCompetitionQueue().getItem(getConfig().getString("competition-id"));
         if (compFile == null) {
             throw new InvalidConfigurationException("Competition ID does not exist for " + file.getName());
         }
         this.compFile = compFile;
-        this.factory = ItemFactory.itemFactory(config);
+        this.factory = ItemFactory.itemFactory(getConfig());
     }
 
     @Override
@@ -49,6 +48,14 @@ public class FishStewItem implements RegistryItem {
 
     private @NotNull ItemStack getItem() {
         return getItem(null);
+    }
+
+    public boolean isDisabled() {
+        return getConfig().getBoolean("disabled", false);
+    }
+
+    public boolean shouldRespectMinimumPlayers() {
+        return getConfig().getBoolean("respect-minimum-players", false);
     }
 
     public @NotNull ItemStack getItem(@Nullable UUID uuid) {
