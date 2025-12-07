@@ -1,8 +1,12 @@
 package uk.firedev.fishstew;
 
+import com.oheers.fish.EvenMoreFish;
+import com.oheers.fish.FishUtils;
 import com.oheers.fish.competition.Competition;
 import com.oheers.fish.competition.configs.CompetitionFile;
+import com.oheers.fish.messages.ConfigMessage;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -41,6 +45,13 @@ public class InteractListener implements Listener {
         }
         CompetitionFile file = fishStew.getCompFile();
         Competition competition = new Competition(file);
+
+        // Optionally respect the competition player requirement
+        if (fishStew.shouldRespectMinimumPlayers() && !competition.isPlayerRequirementMet()) {
+            player.sendPlainMessage("There are not enough players online to start the competition.");
+            return;
+        }
+
         competition.setAdminStarted(true);
         competition.begin();
         
