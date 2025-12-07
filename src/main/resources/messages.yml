@@ -1,0 +1,19 @@
+# The prefix that is added to any message via the {prefix} variable.
+prefix: "<gray>[FishStew]</gray> "
+
+# When the plugin is reloaded.
+reloaded: "{prefix}<white>Successfully reloaded the plugin."
+# When you are given a fish stew.
+stew-received: "{prefix}<white>You have been given a fish stew."
+# When you give another player a fish stew.
+stew-given: "{prefix}<white>You have given {target} a fish stew."
+# When there are not enough online players to start the competition.
+not-enough-players: "{prefix}<white>There are not enough players online to start the competition."
+# When a competition is active.
+competition-active: "{prefix}<white>A competition is already active! Please wait until it is over."
+# When a fish stew item is invalid.
+stew-invalid: "{prefix}<white>This fish stew is no longer valid."
+
+# ATTENTION ATTENTION ATTENTION
+# DO NOT EDIT THIS VALUE OR THINGS WILL BREAK!!!
+version: 1

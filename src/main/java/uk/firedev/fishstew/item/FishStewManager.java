@@ -52,7 +52,7 @@ public class FishStewManager {
 
     private void logLoadedItems() {
         FishStewPlugin.getInstance().getLogger().info(
-            "Loaded FishStewManager with " + FishStewRegistry.getInstance().getSize() + " Items."
+            "Loaded FishStewManager with " + FishStewRegistry.getInstance().getSize() + " Item(s)."
         );
     }
 

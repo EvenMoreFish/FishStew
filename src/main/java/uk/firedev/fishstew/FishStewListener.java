@@ -1,12 +1,8 @@
 package uk.firedev.fishstew;
 
-import com.oheers.fish.EvenMoreFish;
-import com.oheers.fish.FishUtils;
+import com.oheers.fish.api.events.EMFPluginReloadEvent;
 import com.oheers.fish.competition.Competition;
 import com.oheers.fish.competition.configs.CompetitionFile;
-import com.oheers.fish.messages.ConfigMessage;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,11 +10,12 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
+import uk.firedev.fishstew.config.MessageConfig;
 import uk.firedev.fishstew.item.FishStewItem;
 import uk.firedev.fishstew.item.FishStewRegistry;
 import uk.firedev.fishstew.utils.Keys;
 
-public class InteractListener implements Listener {
+public class FishStewListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -36,11 +33,11 @@ public class InteractListener implements Listener {
         }
         FishStewItem fishStew = FishStewRegistry.getInstance().get(id);
         if (fishStew == null) {
-            player.sendPlainMessage("The fish stew you tried to use is no longer configured.");
+            MessageConfig.getInstance().getStewInvalid().send(player);
             return;
         }
         if (Competition.isActive()) {
-            player.sendPlainMessage("There is an active competition! Please wait until it is over.");
+            MessageConfig.getInstance().getCompetitionActive().send(player);
             return;
         }
         CompetitionFile file = fishStew.getCompFile();
@@ -48,7 +45,7 @@ public class InteractListener implements Listener {
 
         // Optionally respect the competition player requirement
         if (fishStew.shouldRespectMinimumPlayers() && !competition.isPlayerRequirementMet()) {
-            player.sendPlainMessage("There are not enough players online to start the competition.");
+            MessageConfig.getInstance().getNotEnoughPlayers().send(player);
             return;
         }
 
@@ -61,6 +58,13 @@ public class InteractListener implements Listener {
         } else {
             player.getInventory().setItemInMainHand(null);
         }
+    }
+
+    @EventHandler
+    public void onEMFReload(EMFPluginReloadEvent event) {
+        FishStewPlugin plugin = FishStewPlugin.getInstance();
+        plugin.getLogger().info("Detected EvenMoreFish reload. Reloading...");
+        plugin.reload();
     }
 
 }

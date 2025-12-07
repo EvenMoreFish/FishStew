@@ -1,18 +1,11 @@
 package uk.firedev.fishstew;
 
-import com.oheers.fish.api.FileUtil;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.fishstew.command.MainCommand;
-import uk.firedev.fishstew.item.FishStewItem;
+import uk.firedev.fishstew.config.MessageConfig;
 import uk.firedev.fishstew.item.FishStewManager;
-import uk.firedev.fishstew.item.FishStewRegistry;
-
-import java.io.File;
-import java.util.List;
-import java.util.logging.Level;
 
 public final class FishStewPlugin extends JavaPlugin {
 
@@ -34,12 +27,13 @@ public final class FishStewPlugin extends JavaPlugin {
 
     @Override
     public void onLoad() {
+        new MessageConfig().init();
         registerCommands();
     }
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new InteractListener(), this);
+        getServer().getPluginManager().registerEvents(new FishStewListener(), this);
         FishStewManager.getInstance().load();
     }
 

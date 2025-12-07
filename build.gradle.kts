@@ -9,6 +9,7 @@ repositories {
     gradlePluginPortal()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.codemc.io/repository/EvenMoreFish/")
+    maven("https://repo.codemc.io/repository/FireML/")
 }
 
 dependencies {
@@ -17,6 +18,8 @@ dependencies {
         exclude("de.tr7zw", "item-nbt-api")
         exclude("com.github.Anon8281", "UniversalScheduler")
     }
+
+    implementation(libs.messagelib)
 }
 
 group = "uk.firedev"
@@ -47,6 +50,8 @@ tasks {
         archiveBaseName.set(project.name)
         archiveVersion.set(project.version.toString())
         archiveClassifier.set("")
+
+        relocate("uk.firedev.messagelib", "uk.firedev.fishstew.libs.messagelib")
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"
