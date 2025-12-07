@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import uk.firedev.fishstew.command.MainCommand;
 import uk.firedev.fishstew.item.FishStewItem;
+import uk.firedev.fishstew.item.FishStewManager;
 import uk.firedev.fishstew.item.FishStewRegistry;
 
 import java.io.File;
@@ -17,11 +18,9 @@ public final class FishStewPlugin extends JavaPlugin {
 
     private static FishStewPlugin INSTANCE;
 
-    private final File itemDirectory = new File(getDataFolder(), "items");
-
     public FishStewPlugin() {
         if (INSTANCE != null) {
-            throw new UnsupportedOperationException(getClass().getName() + " has already been assigned!");
+            throw new UnsupportedOperationException(getClass().getSimpleName() + " has already been assigned!");
         }
         INSTANCE = this;
     }
@@ -35,20 +34,19 @@ public final class FishStewPlugin extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        if (!itemDirectory.exists()) {
-            itemDirectory.mkdirs();
-        }
         registerCommands();
     }
 
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new InteractListener(), this);
-        reload();
+        FishStewManager.getInstance().load();
     }
 
     @Override
-    public void onDisable() {}
+    public void onDisable() {
+        FishStewManager.getInstance().unload();
+    }
 
     @SuppressWarnings("UnstableApiUsage")
     private void registerCommands() {
@@ -58,17 +56,7 @@ public final class FishStewPlugin extends JavaPlugin {
     }
 
     public void reload() {
-        FishStewRegistry.getInstance().clear();
-        List<File> stewFiles = FileUtil.getFilesInDirectory(itemDirectory, true, true);
-
-        for (File file : stewFiles) {
-            try {
-                FishStewItem item = new FishStewItem(file);
-                FishStewRegistry.getInstance().register(item);
-            } catch (InvalidConfigurationException exception) {
-                getLogger().warning(exception.getMessage());
-            }
-        }
+        FishStewManager.getInstance().reload();
     }
 
 }

@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper.api)
-    compileOnly(libs.bundles.evenmorefish) {
+    compileOnly(libs.evenmorefish) {
         exclude("de.tr7zw", "item-nbt-api")
         exclude("com.github.Anon8281", "UniversalScheduler")
     }
