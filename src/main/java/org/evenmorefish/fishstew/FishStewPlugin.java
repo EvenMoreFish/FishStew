@@ -1,11 +1,11 @@
-package uk.firedev.fishstew;
+package org.evenmorefish.fishstew;
 
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.fishstew.command.MainCommand;
-import uk.firedev.fishstew.config.MessageConfig;
-import uk.firedev.fishstew.item.FishStewManager;
+import org.evenmorefish.fishstew.command.MainCommand;
+import org.evenmorefish.fishstew.config.MessageConfig;
+import org.evenmorefish.fishstew.item.FishStewManager;
 
 public final class FishStewPlugin extends JavaPlugin {
 

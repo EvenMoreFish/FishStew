@@ -1,4 +1,4 @@
-package uk.firedev.fishstew.utils;
+package org.evenmorefish.fishstew.utils;
 
 import org.bukkit.NamespacedKey;
 

@@ -1,4 +1,4 @@
-package uk.firedev.fishstew.command;
+package org.evenmorefish.fishstew.command;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.tree.LiteralCommandNode;
@@ -10,9 +10,9 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.fishstew.FishStewPlugin;
-import uk.firedev.fishstew.config.MessageConfig;
-import uk.firedev.fishstew.item.FishStewItem;
+import org.evenmorefish.fishstew.FishStewPlugin;
+import org.evenmorefish.fishstew.config.MessageConfig;
+import org.evenmorefish.fishstew.item.FishStewItem;
 
 // Safe to suppress as the same API is stable in modern Paper.
 @SuppressWarnings("UnstableApiUsage")

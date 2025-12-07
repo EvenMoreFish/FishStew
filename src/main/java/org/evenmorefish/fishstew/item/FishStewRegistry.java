@@ -1,10 +1,9 @@
-package uk.firedev.fishstew.item;
+package org.evenmorefish.fishstew.item;
 
 import com.oheers.fish.api.registry.EMFRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 

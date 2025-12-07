@@ -1,10 +1,9 @@
-package uk.firedev.fishstew.config;
+package org.evenmorefish.fishstew.config;
 
 import com.oheers.fish.api.config.ConfigBase;
-import com.oheers.fish.messages.EMFConfigLoader;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.fishstew.FishStewPlugin;
+import org.evenmorefish.fishstew.FishStewPlugin;
 import uk.firedev.messagelib.message.ComponentMessage;
 import uk.firedev.messagelib.message.ComponentSingleMessage;
 import uk.firedev.messagelib.replacer.Replacer;

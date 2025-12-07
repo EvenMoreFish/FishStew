@@ -22,7 +22,7 @@ dependencies {
     implementation(libs.messagelib)
 }
 
-group = "uk.firedev"
+group = "org.evenmorefish"
 version = properties["project-version"] as String
 description = "An EvenMoreFish addon that adds items to start a fishing contest."
 java.sourceCompatibility = JavaVersion.VERSION_21
@@ -30,7 +30,7 @@ java.sourceCompatibility = JavaVersion.VERSION_21
 bukkit {
     name = project.name
     version = project.version.toString()
-    main = "uk.firedev.fishstew.FishStewPlugin"
+    main = "org.evenmorefish.fishstew.FishStewPlugin"
     apiVersion = "1.21"
     author = "FireML"
     description = project.description.toString()
@@ -51,7 +51,7 @@ tasks {
         archiveVersion.set(project.version.toString())
         archiveClassifier.set("")
 
-        relocate("uk.firedev.messagelib", "uk.firedev.fishstew.libs.messagelib")
+        relocate("uk.firedev.messagelib", "org.evenmorefish.fishstew.libs.messagelib")
     }
     withType<JavaCompile> {
         options.encoding = "UTF-8"

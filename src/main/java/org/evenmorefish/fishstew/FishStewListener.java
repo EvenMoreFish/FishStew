@@ -1,4 +1,4 @@
-package uk.firedev.fishstew;
+package org.evenmorefish.fishstew;
 
 import com.oheers.fish.api.events.EMFPluginReloadEvent;
 import com.oheers.fish.competition.Competition;
@@ -10,10 +10,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
-import uk.firedev.fishstew.config.MessageConfig;
-import uk.firedev.fishstew.item.FishStewItem;
-import uk.firedev.fishstew.item.FishStewRegistry;
-import uk.firedev.fishstew.utils.Keys;
+import org.evenmorefish.fishstew.config.MessageConfig;
+import org.evenmorefish.fishstew.item.FishStewItem;
+import org.evenmorefish.fishstew.item.FishStewRegistry;
+import org.evenmorefish.fishstew.utils.Keys;
 
 public class FishStewListener implements Listener {
 

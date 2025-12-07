@@ -1,4 +1,4 @@
-package uk.firedev.fishstew.item;
+package org.evenmorefish.fishstew.item;
 
 import com.oheers.fish.EvenMoreFish;
 import com.oheers.fish.FishUtils;
@@ -6,15 +6,14 @@ import com.oheers.fish.api.config.ConfigBase;
 import com.oheers.fish.api.registry.RegistryItem;
 import com.oheers.fish.competition.configs.CompetitionFile;
 import com.oheers.fish.items.ItemFactory;
-import dev.dejvokep.boostedyaml.YamlDocument;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import uk.firedev.fishstew.FishStewPlugin;
-import uk.firedev.fishstew.utils.Keys;
+import org.evenmorefish.fishstew.FishStewPlugin;
+import org.evenmorefish.fishstew.utils.Keys;
 
 import java.io.File;
 import java.util.UUID;

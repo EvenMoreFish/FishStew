@@ -1,14 +1,13 @@
-package uk.firedev.fishstew.reward;
+package org.evenmorefish.fishstew.reward;
 
-import com.oheers.fish.FishUtils;
 import com.oheers.fish.api.reward.RewardType;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.fishstew.FishStewPlugin;
-import uk.firedev.fishstew.item.FishStewItem;
-import uk.firedev.fishstew.item.FishStewRegistry;
+import org.evenmorefish.fishstew.FishStewPlugin;
+import org.evenmorefish.fishstew.item.FishStewItem;
+import org.evenmorefish.fishstew.item.FishStewRegistry;
 
 public class FishStewRewardType extends RewardType {
 

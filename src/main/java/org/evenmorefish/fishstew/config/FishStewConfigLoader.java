@@ -1,4 +1,4 @@
-package uk.firedev.fishstew.config;
+package org.evenmorefish.fishstew.config;
 
 import dev.dejvokep.boostedyaml.block.implementation.Section;
 import org.jetbrains.annotations.NotNull;

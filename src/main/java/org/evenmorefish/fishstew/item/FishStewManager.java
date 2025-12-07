@@ -1,9 +1,9 @@
-package uk.firedev.fishstew.item;
+package org.evenmorefish.fishstew.item;
 
 import com.oheers.fish.api.FileUtil;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.fishstew.FishStewPlugin;
+import org.evenmorefish.fishstew.FishStewPlugin;
 
 import java.io.File;
 import java.util.List;

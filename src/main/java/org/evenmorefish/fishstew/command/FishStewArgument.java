@@ -1,4 +1,4 @@
-package uk.firedev.fishstew.command;
+package org.evenmorefish.fishstew.command;
 
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -7,14 +7,12 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.oheers.fish.EvenMoreFish;
-import com.oheers.fish.competition.configs.CompetitionFile;
 import io.papermc.paper.command.brigadier.MessageComponentSerializer;
 import io.papermc.paper.command.brigadier.argument.CustomArgumentType;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
-import uk.firedev.fishstew.item.FishStewItem;
-import uk.firedev.fishstew.item.FishStewRegistry;
+import org.evenmorefish.fishstew.item.FishStewItem;
+import org.evenmorefish.fishstew.item.FishStewRegistry;
 
 import java.util.concurrent.CompletableFuture;
 
