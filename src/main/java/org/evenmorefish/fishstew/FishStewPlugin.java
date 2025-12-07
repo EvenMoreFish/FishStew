@@ -36,7 +36,7 @@ public final class FishStewPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.metrics = new Metrics(this, 28265);
+        this.metrics = new Metrics(this, 28266);
 
         getServer().getPluginManager().registerEvents(new FishStewListener(), this);
         FishStewManager.getInstance().load();
