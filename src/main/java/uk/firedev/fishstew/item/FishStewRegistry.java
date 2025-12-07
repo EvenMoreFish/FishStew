@@ -49,6 +49,10 @@ public class FishStewRegistry implements EMFRegistry<FishStewItem> {
         return true;
     }
 
+    public int getSize() {
+        return registry.size();
+    }
+
     public void clear() {
         registry.clear();
     }
