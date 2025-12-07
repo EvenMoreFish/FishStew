@@ -1,4 +1,4 @@
-rootProject.name = "FishStew"
+rootProject.name = "EMFFishStew"
 
 dependencyResolutionManagement {
     versionCatalogs {
