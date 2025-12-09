@@ -19,4 +19,6 @@ Snapshot/Dev Builds are available on [Jenkins](https://ci.codemc.io/job/EvenMore
 
 ## Wiki
 
-The wiki can be found here: https://github.com/EvenMoreFish/FishStew/wiki
+**Command Permission**: `fishstew.command`
+
+**Item Configuration**: Every possible config value is in the `items/_example.yml` file.
