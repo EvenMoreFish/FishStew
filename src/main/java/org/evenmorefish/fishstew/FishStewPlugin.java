@@ -1,8 +1,10 @@
 package org.evenmorefish.fishstew;
 
+import com.oheers.fish.api.registry.EMFRegistry;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.evenmorefish.fishstew.metrics.Metrics;
+import org.evenmorefish.fishstew.reward.FishStewRewardType;
 import org.jetbrains.annotations.NotNull;
 import org.evenmorefish.fishstew.command.MainCommand;
 import org.evenmorefish.fishstew.config.MessageConfig;
@@ -40,6 +42,8 @@ public final class FishStewPlugin extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new FishStewListener(), this);
         FishStewManager.getInstance().load();
+
+        EMFRegistry.REWARD_TYPE.register(new FishStewRewardType());
     }
 
     @Override
