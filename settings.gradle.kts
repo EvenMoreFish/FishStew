@@ -9,7 +9,7 @@ dependencyResolutionManagement {
             library("evenmorefish", "com.oheers.evenmorefish:even-more-fish-plugin:2.1.5")
 
             // implementation dependencies
-            library("messagelib", "uk.firedev:MessageLib:1.0.3")
+            library("messagelib", "uk.firedev:MessageLib:1.0.6")
 
             // paperLibrary dependencies
 

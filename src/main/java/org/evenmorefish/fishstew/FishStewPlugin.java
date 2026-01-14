@@ -25,7 +25,7 @@ public final class FishStewPlugin extends JavaPlugin {
 
     public static @NotNull FishStewPlugin getInstance() {
         if (INSTANCE == null) {
-            throw new UnsupportedOperationException(FishStewPlugin.class.getSimpleName() + " has not been assigned!");
+            throw new IllegalStateException(FishStewPlugin.class.getSimpleName() + " has not been assigned!");
         }
         return INSTANCE;
     }
